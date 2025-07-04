@@ -13,6 +13,7 @@ const {
     get_authorId
 }=require('../controllers/library.controller')
 const express=require("express")
+const exist = require('../middleware/exist.middleware')
 
 const LibraryRouter=express.Router()
 
@@ -32,7 +33,7 @@ LibraryRouter.get("/books",get_books)
 
 LibraryRouter.get("/book/:id",get_booksbyid)
 
-LibraryRouter.post("/add-book",add_book)
+LibraryRouter.post("/add-book",exist,add_book)
 
 LibraryRouter.put("/up-book/:id",update_bookbyid)
 
